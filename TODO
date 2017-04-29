@@ -1,0 +1,6 @@
+split into:
+  -precompilled with stable  (make stable branch)
+  if success(push bullet notif for build){
+    -use precompiled then fork then make >> log (log dir in shared drive for further analysis) (merge to cmp branch)
+      if successfull (push bulllet notif for test cases) && (merge to com_success branch)
+        - run compiled file from shared drive thru test cases
