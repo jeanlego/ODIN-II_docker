@@ -13,7 +13,7 @@ VOLUME /workspace
 RUN git clone https://github.com/jeanlego/vtr-verilog-to-routing.git /VTR
 RUN cd /VTR && make && make install
 
-
+RUN apt-get install software-properties-common python-software-properties
 RUN add-apt-repository ppa:webupd8team/atom
 RUN apt-get install atom
 VOLUME ~/atom_base
