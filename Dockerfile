@@ -8,9 +8,19 @@ RUN apt-get update && apt-get install -y libx11-dev libxft-dev fontconfig libcai
 
 ## pull vtr-verilog-to-routing fork from my repo
 RUN mkdir -p /workspace  &&  mkdir -p /VTR
+
 VOLUME /workspace
 RUN git clone https://github.com/jeanlego/vtr-verilog-to-routing.git /VTR
 RUN cd /VTR && make && make install
 
-## switch back to default user
-USER 1984
+
+RUN add-apt-repository ppa:webupd8team/atom
+RUN apt-get install atom
+VOLUME ~/atom_base
+
+
+EXPOSE 5901
+EXPOSE 6901
+ENTRYPOINT ["/bin/cp", "-rf", "~/atom_base", "~/.atom"]
+
+
