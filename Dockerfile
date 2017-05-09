@@ -1,5 +1,3 @@
-##testh
-## Custom Dockerfile
 FROM consol/ubuntu-xfce-vnc:latest
 
 USER 0
@@ -22,5 +20,3 @@ VOLUME ~/atom_base
 EXPOSE 5901
 EXPOSE 6901
 CMD ["/bin/cp", "-rf", "~/atom_base", "~/.atom"]
-
-
