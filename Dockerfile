@@ -21,6 +21,6 @@ VOLUME ~/atom_base
 
 EXPOSE 5901
 EXPOSE 6901
-ENTRYPOINT ["/bin/cp", "-rf", "~/atom_base", "~/.atom"]
+CMD ["/bin/cp", "-rf", "~/atom_base", "~/.atom"]
 
 
