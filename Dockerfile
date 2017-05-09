@@ -12,7 +12,7 @@ RUN git clone https://github.com/jeanlego/vtr-verilog-to-routing.git /VTR
 RUN cd /VTR && make && make install
 
 RUN apt-get install -y software-properties-common python-software-properties
-RUN add-apt-repository -y ppa:webupd8team/atom
+RUN add-apt-repository -y ppa:webupd8team/atom && apt-get update
 RUN apt-get install  -y atom
 VOLUME ~/atom_base
 
