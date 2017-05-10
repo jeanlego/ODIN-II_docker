@@ -15,9 +15,12 @@ RUN apt-get install -y software-properties-common python-software-properties
 RUN add-apt-repository -y ppa:webupd8team/atom
 RUN apt-get update
 RUN apt-get install  -y atom
-VOLUME ~/atom_base
+RUN mkdir -p /atom_settings
+chmod 775 -rf ~/.atom
+ln -s ~/.atom /
+VOLUME /atom_settings
 
 
 EXPOSE 5901
 EXPOSE 6901
-CMD ["/bin/cp", "-rf", "~/atom_base", "~/.atom"]
+CMD ["/bin/cp", "-rf", "/atom_settings", "/.atom"]
