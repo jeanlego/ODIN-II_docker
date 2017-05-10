@@ -1,6 +1,4 @@
-FROM consol/ubuntu-xfce-vnc:latest
-
-USER 0
+FROM dorowu/ubuntu-desktop-lxde-vnc
 ## install libraries
 RUN apt-get update && apt-get install -y libx11-dev libxft-dev fontconfig libcairo2-dev gcc automake git cmake flex bison ctags
 
