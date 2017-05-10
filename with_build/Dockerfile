@@ -1,5 +1,5 @@
 ## Custom Dockerfile
-FROM jeanlego/vnc_base:latest
+FROM jeanlego/odin-ii_docker
 
 USER 0
 ## pull vtr-verilog-to-routing fork from my repo
