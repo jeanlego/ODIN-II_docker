@@ -32,7 +32,7 @@ RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js
 RUN touch /etc/supervisor/conf.d/cloud9.conf
 
 RUN echo '[program:cloud9]' >> /etc/supervisor/conf.d/cloud9.conf
-RUN echo 'command = node /cloud9/server.js --listen 0.0.0.0 --port 8080 -w /workspace --collab' >> /etc/supervisor/conf.d/cloud9.conf
+RUN echo 'command = nodejs /cloud9/server.js --listen 0.0.0.0 --port 8080 -w /workspace --collab' >> /etc/supervisor/conf.d/cloud9.conf
 RUN echo 'directory = /cloud9' >> /etc/supervisor/conf.d/cloud9.conf
 RUN echo 'user = root' >> /etc/supervisor/conf.d/cloud9.conf
 RUN echo 'autostart = true' >> /etc/supervisor/conf.d/cloud9.conf
