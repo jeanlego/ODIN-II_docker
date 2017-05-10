@@ -16,11 +16,11 @@ RUN add-apt-repository -y ppa:webupd8team/atom
 RUN apt-get update
 RUN apt-get install  -y atom
 RUN mkdir -p /atom_settings
-RUN chmod 775 -rf ~/.atom
+RUN chmod 775 -Rf ~/.atom
 RUN ln -s ~/.atom /
 VOLUME /atom_settings
 
 
 EXPOSE 5901
 EXPOSE 6901
-CMD ["/bin/cp", "-rf", "/atom_settings", "/.atom"]
+CMD ["/bin/cp", "-Rf", "/atom_settings/.", "/.atom"]
