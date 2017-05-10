@@ -41,6 +41,24 @@ RUN echo 'stdout_logfile = /var/log/supervisor/cloud9.log' >> /etc/supervisor/co
 RUN echo 'stderr_logfile = /var/log/supervisor/cloud9_errors.log' >> /etc/supervisor/conf.d/cloud9.conf
 RUN echo 'environment = NODE_ENV="production"' >> /etc/supervisor/conf.d/cloud9.conf
 
+RUN apt-get install openssh-server -y
+
+RUN echo 'root:root' |chpasswd
+
+RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+
+RUN touch /etc/supervisor/conf.d/ssh.conf
+
+RUN echo '[program:ssh]' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'command = /usr/sbin/sshd -D' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'user = root' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'autostart = true' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'autorestart = true' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'stdout_logfile = /var/log/supervisor/ssh.log' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'stderr_logfile = /var/log/supervisor/ssh.log' >> /etc/supervisor/conf.d/ssh.conf
+RUN echo 'environment = NODE_ENV="production"' >> /etc/supervisor/conf.d/cloud9.conf
+
 # ------------------------------------------------------------------------------
 # Add volumes
 RUN mkdir /workspace
@@ -50,6 +68,7 @@ VOLUME /workspace
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+EXPOSE 22
 EXPOSE 80
 EXPOSE 3000
 EXPOSE 8080
