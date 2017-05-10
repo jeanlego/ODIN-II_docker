@@ -16,8 +16,8 @@ RUN add-apt-repository -y ppa:webupd8team/atom
 RUN apt-get update
 RUN apt-get install  -y atom
 RUN mkdir -p /atom_settings
-chmod 775 -rf ~/.atom
-ln -s ~/.atom /
+RUN chmod 775 -rf ~/.atom
+RUN ln -s ~/.atom /
 VOLUME /atom_settings
 
 
