@@ -50,12 +50,6 @@ VOLUME /workspace
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-## pull vtr-verilog-to-routing fork from my repo
-RUN mkdir -p /VTR
-
-RUN git clone https://github.com/jeanlego/vtr-verilog-to-routing.git /VTR
-RUN cd /VTR && make && make install
-
 EXPOSE 80
 EXPOSE 3000
 EXPOSE 8080
