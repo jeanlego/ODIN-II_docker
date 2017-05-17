@@ -11,5 +11,5 @@ VOLUME /workspace
 
 EXPOSE 8080
 EXPOSE 22
-
-CMD ["case", "$(/bin/ls", "/workspace)", "in", "*VTR*);;*)/bin/cp", "-r", "/VTR", "/workspace;;esac", "&&", "supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+ENTRYPOINT "case $(/bin/ls /workspace) in *VTR*);;*)/bin/cp -r /VTR /workspace;;esac" && /bin/bash
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
