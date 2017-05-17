@@ -14,6 +14,8 @@ RUN echo '/bin/cp -r /VTR /workspace' >> /on_boot.sh
 RUN echo ';;esac' >> /on_boot.sh
 RUN echo 'supervisord -c /etc/supervisor/supervisord.conf' >> /on_boot.sh
 
+RUN chmod +x /on_boot.sh
+
 VOLUME /workspace
 
 EXPOSE 8080
