@@ -9,7 +9,7 @@ RUN cd /VTR && make && make install
 
 VOLUME /workspace
 
-EXPOSE 80
+EXPOSE 8080
 EXPOSE 22
 
-CMD ["mkdir", "-p", "/workspace/VTR", "&&", "rsync", "-a", "-v", "--ignore-existing", "/VTR", "/workspace/VTR", "&&", "cp", "/VTR", "/workspace""supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["rsync", "-a", "-v", "--ignore-existing", "/VTR", "/workspace/VTR", "&&", "supervisord", "-c", "/etc/supervisor/supervisord.conf"]
