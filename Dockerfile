@@ -12,4 +12,4 @@ VOLUME /workspace
 EXPOSE 8080
 EXPOSE 22
 
-CMD ["rsync", "-a", "-v", "--ignore-existing", "/VTR", "/workspace/VTR", "&&", "supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["rsync", "-a", "-v", "--ignore-existing", "/VTR", "/workspace", "&&", "supervisord", "-c", "/etc/supervisor/supervisord.conf"]
