@@ -20,3 +20,4 @@ VOLUME /workspace
 
 EXPOSE 8080
 EXPOSE 22
+CMD ["/bin/sh", "/on_boot.sh", "&&", "supervisord", "-c", "/etc/supervisor/supervisord.conf"]
