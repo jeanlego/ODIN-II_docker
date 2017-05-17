@@ -18,4 +18,4 @@ VOLUME /workspace
 
 EXPOSE 8080
 EXPOSE 22
-CMD ./on_boot.sh
+CMD ["./on_boot.sh"]
