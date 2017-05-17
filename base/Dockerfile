@@ -1,10 +1,10 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc
+FROM ubuntu:latest
 
 RUN apt-get update
 RUN apt-get upgrade -y
 # ------------------------------------------------------------------------------
 # Install base
-RUN apt-get install -y supervisor build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs libx11-dev libxft-dev fontconfig libcairo2-dev gcc automake git cmake flex bison ctags libpam-cracklib
+RUN apt-get install -y supervisor build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs libx11-dev libxft-dev fontconfig libcairo2-dev gcc automake git cmake flex bison ctags libpam-cracklib gdb perl 
 RUN rm -rf /var/lib/apt/lists/*
 RUN sed -i 's/^\(\[supervisord\]\)$/\1\nnodaemon=true/' /etc/supervisor/supervisord.conf
 
@@ -69,8 +69,6 @@ VOLUME /workspace
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 22
-EXPOSE 80
-EXPOSE 3000
 EXPOSE 8080
 
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
